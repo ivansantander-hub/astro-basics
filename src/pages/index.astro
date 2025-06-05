@@ -1,8 +1,10 @@
 ---
 import Welcome from '../components/welcome/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 ---
 
-<Layout>
+<Layout title="Welcome - Super Sphere">
+	<ThemeToggle />
 	<Welcome />
 </Layout>

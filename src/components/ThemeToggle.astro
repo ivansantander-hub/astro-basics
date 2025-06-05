@@ -1,0 +1,227 @@
+---
+// Advanced Theme Toggle Component with GSAP
+---
+
+<div
+  id="theme-toggle-container"
+  class="fixed top-6 right-6 z-50"
+>
+  <button
+    id="theme-toggle"
+    class="relative w-16 h-8 bg-gradient-to-r from-blue-400 to-purple-500 dark:from-gray-600 dark:to-gray-800 rounded-full shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-gray-600"
+    aria-label="Toggle dark mode"
+  >
+    <!-- Toggle Ball -->
+    <div
+      id="toggle-ball"
+      class="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center transition-all duration-300"
+    >
+      <!-- Sun Icon -->
+      <svg
+        id="sun-icon"
+        class="w-4 h-4 text-yellow-500"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      
+      <!-- Moon Icon -->
+      <svg
+        id="moon-icon"
+        class="w-4 h-4 text-gray-700 absolute opacity-0"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+      </svg>
+    </div>
+    
+    <!-- Background Stars -->
+    <div class="absolute inset-0 overflow-hidden rounded-full">
+      <div id="star1" class="absolute w-1 h-1 bg-white rounded-full opacity-0" style="top: 25%; left: 20%;"></div>
+      <div id="star2" class="absolute w-1 h-1 bg-white rounded-full opacity-0" style="top: 40%; left: 80%;"></div>
+      <div id="star3" class="absolute w-0.5 h-0.5 bg-white rounded-full opacity-0" style="top: 65%; left: 30%;"></div>
+      <div id="star4" class="absolute w-0.5 h-0.5 bg-white rounded-full opacity-0" style="top: 75%; left: 75%;"></div>
+    </div>
+    
+    <!-- Light Rays -->
+    <div id="light-rays" class="absolute inset-0 flex items-center justify-center opacity-100">
+      <div class="absolute w-8 h-0.5 bg-yellow-300 rounded-full transform rotate-0 origin-center opacity-60"></div>
+      <div class="absolute w-6 h-0.5 bg-yellow-300 rounded-full transform rotate-45 origin-center opacity-40"></div>
+      <div class="absolute w-8 h-0.5 bg-yellow-300 rounded-full transform rotate-90 origin-center opacity-60"></div>
+      <div class="absolute w-6 h-0.5 bg-yellow-300 rounded-full transform rotate-135 origin-center opacity-40"></div>
+    </div>
+  </button>
+  
+  <!-- Tooltip -->
+  <div
+    id="tooltip"
+    class="absolute top-12 right-0 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-3 py-1 rounded-lg text-sm opacity-0 pointer-events-none transition-opacity duration-200 whitespace-nowrap"
+  >
+    <span id="tooltip-text">Switch to dark mode</span>
+    <div class="absolute -top-1 right-4 w-2 h-2 bg-gray-900 dark:bg-gray-100 rotate-45"></div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+  
+  function initThemeToggle() {
+    const container = document.getElementById('theme-toggle-container');
+    const toggle = document.getElementById('theme-toggle');
+    const ball = document.getElementById('toggle-ball');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const lightRays = document.getElementById('light-rays');
+    const stars = [
+      document.getElementById('star1'),
+      document.getElementById('star2'),
+      document.getElementById('star3'),
+      document.getElementById('star4')
+    ];
+    const tooltip = document.getElementById('tooltip');
+    const tooltipText = document.getElementById('tooltip-text');
+    
+    // Set initial theme state
+    const isDark = document.documentElement.classList.contains('dark');
+    
+    // Set initial animations state
+    if (isDark) {
+      gsap.set(ball, { x: 32 });
+      gsap.set(sunIcon, { opacity: 0, scale: 0 });
+      gsap.set(moonIcon, { opacity: 1, scale: 1 });
+      gsap.set(lightRays, { opacity: 0 });
+      gsap.set(stars, { opacity: 1 });
+      if (tooltipText) tooltipText.textContent = 'Switch to light mode';
+    } else {
+      gsap.set(ball, { x: 0 });
+      gsap.set(sunIcon, { opacity: 1, scale: 1 });
+      gsap.set(moonIcon, { opacity: 0, scale: 0 });
+      gsap.set(lightRays, { opacity: 1 });
+      gsap.set(stars, { opacity: 0 });
+      if (tooltipText) tooltipText.textContent = 'Switch to dark mode';
+    }
+    
+    // Hover animations
+    toggle?.addEventListener('mouseenter', () => {
+      gsap.to(tooltip, { opacity: 1, duration: 0.2 });
+      gsap.to(toggle, { scale: 1.05, duration: 0.2 });
+    });
+    
+    toggle?.addEventListener('mouseleave', () => {
+      gsap.to(tooltip, { opacity: 0, duration: 0.2 });
+      gsap.to(toggle, { scale: 1, duration: 0.2 });
+    });
+    
+    // Click animation and theme toggle
+    toggle?.addEventListener('click', () => {
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      
+      // Toggle theme
+      document.documentElement.classList.toggle('dark');
+      
+             // Save preference
+       if (document.documentElement.classList.contains('dark')) {
+         localStorage.theme = 'dark';
+         if (tooltipText) tooltipText.textContent = 'Switch to light mode';
+       } else {
+         localStorage.theme = 'light';
+         if (tooltipText) tooltipText.textContent = 'Switch to dark mode';
+       }
+      
+      // Create timeline for smooth animations
+      const tl = gsap.timeline();
+      
+      if (!isDarkMode) {
+        // Switching to dark mode
+        tl.to(ball, { x: 32, duration: 0.5, ease: "power2.out" })
+          .to(lightRays, { opacity: 0, scale: 0, duration: 0.3 }, 0)
+          .to(sunIcon, { opacity: 0, scale: 0, rotation: 180, duration: 0.3 }, 0)
+          .to(moonIcon, { opacity: 1, scale: 1, rotation: 0, duration: 0.4 }, 0.2)
+                     .to(stars.filter(Boolean), { 
+             opacity: 1, 
+             scale: 1,
+             duration: 0.6,
+             stagger: 0.1,
+             ease: "back.out(1.7)"
+           }, 0.3);
+      } else {
+        // Switching to light mode
+        tl.to(ball, { x: 0, duration: 0.5, ease: "power2.out" })
+          .to(stars, { opacity: 0, scale: 0, duration: 0.3 }, 0)
+          .to(moonIcon, { opacity: 0, scale: 0, rotation: -180, duration: 0.3 }, 0)
+          .to(sunIcon, { opacity: 1, scale: 1, rotation: 0, duration: 0.4 }, 0.2)
+          .to(lightRays, { 
+            opacity: 1, 
+            scale: 1, 
+            duration: 0.4,
+            ease: "back.out(1.7)"
+          }, 0.3);
+      }
+      
+      // Add a satisfying click animation
+      gsap.to(toggle, { 
+        scale: 0.95, 
+        duration: 0.1, 
+        yoyo: true, 
+        repeat: 1,
+        ease: "power2.out"
+      });
+    });
+    
+         // Continuous gentle animations
+     if (lightRays) {
+       gsap.to(lightRays.children, {
+         rotation: 360,
+         duration: 8,
+         repeat: -1,
+         ease: "none",
+         stagger: 0.5
+       });
+     }
+    
+    // Twinkling stars
+    stars.forEach((star, index) => {
+      if (star) {
+        gsap.to(star, {
+          opacity: isDark ? "random(0.3, 1)" : 0,
+          scale: "random(0.5, 1.5)",
+          duration: "random(1, 3)",
+          repeat: -1,
+          yoyo: true,
+          delay: index * 0.5,
+          ease: "power2.inOut"
+        });
+      }
+    });
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initThemeToggle);
+  } else {
+    initThemeToggle();
+  }
+</script>
+
+<style>
+  /* Additional styles for better visual effects */
+  #theme-toggle {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  
+  .dark #theme-toggle {
+    background: linear-gradient(45deg, #4b5563, #374151);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  #toggle-ball {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+</style> 
