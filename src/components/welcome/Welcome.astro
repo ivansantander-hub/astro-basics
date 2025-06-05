@@ -1,12 +1,640 @@
-<div id="container" class="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 flex items-center justify-center">
-	<main class="text-center">
-		<section id="hero" class="space-y-6">
-			<h1 class="text-5xl md:text-7xl font-bold text-white mb-8 animate-pulse">
-				First Site with Astro
-			</h1>
-			<p class="text-xl text-gray-300 max-w-2xl mx-auto">
-				Welcome to my website!
-			</p>
-		</section>
-	</main>
+---
+// Welcome component script
+---
+
+<div id="welcome-container" class="bg-slate-900 overflow-hidden">
+	<!-- Hero Section -->
+	<section id="hero" class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+		<!-- Background Elements -->
+		<div class="absolute inset-0 opacity-20">
+			<div class="floating-element absolute top-20 left-10 w-20 sm:w-32 h-20 sm:h-32 bg-blue-400 rounded-full blur-xl"></div>
+			<div class="floating-element absolute top-40 right-20 w-16 sm:w-24 h-16 sm:h-24 bg-purple-400 rounded-full blur-lg"></div>
+			<div class="floating-element absolute bottom-32 left-20 w-24 sm:w-40 h-24 sm:h-40 bg-indigo-400 rounded-full blur-2xl"></div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="text-center max-w-6xl mx-auto relative z-10 py-20">
+			<!-- Title -->
+			<div class="title-container mb-12">
+				<h1 class="text-4xl sm:text-6xl lg:text-8xl font-bold text-white mb-6 leading-tight">
+					<span class="title-word block sm:inline-block">Super</span>
+					<span class="title-word block sm:inline-block text-blue-400 sm:ml-4">Sphere</span>
+				</h1>
+				<div class="subtitle-line h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full opacity-0"></div>
+			</div>
+
+			<!-- Description -->
+			<div class="description-container space-y-8 mb-16">
+				<p class="text-lg sm:text-xl lg:text-2xl text-gray-300 font-light leading-relaxed">
+					A modern <span class="text-blue-400 font-medium">Astro boilerplate</span> by <span class="text-purple-400 font-medium">Ivan Santander</span>
+				</p>
+				
+				<!-- Tech Stack -->
+				<div class="tech-stack flex flex-wrap justify-center gap-4 sm:gap-6 my-12">
+					<div class="tech-item bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20">
+						<span class="text-orange-400 font-semibold text-sm sm:text-base">Astro</span>
+					</div>
+					<div class="tech-item bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20">
+						<span class="text-green-400 font-semibold text-sm sm:text-base">GSAP</span>
+					</div>
+					<div class="tech-item bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white/20">
+						<span class="text-cyan-400 font-semibold text-sm sm:text-base">Tailwind CSS</span>
+					</div>
+				</div>
+
+				<p class="text-base sm:text-lg text-gray-400 max-w-3xl mx-auto px-4">
+					Seamlessly integrated for lightning-fast development with smooth animations and beautiful design systems
+				</p>
+			</div>
+
+			<!-- Scroll Indicator -->
+			<div class="scroll-indicator">
+				<div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center mx-auto">
+					<div class="scroll-dot w-1 h-3 bg-white/50 rounded-full mt-2"></div>
+				</div>
+				<p class="text-gray-400 text-sm mt-4">Scroll to explore</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Features Section -->
+	<section id="features" class="relative py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+		<div class="max-w-7xl mx-auto">
+			<!-- Section Title -->
+			<div class="text-center mb-20">
+				<h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+					Why Choose This Boilerplate?
+				</h2>
+				<p class="section-subtitle text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+					Built with modern technologies and best practices for professional web development
+				</p>
+			</div>
+
+			<!-- Features Grid -->
+			<div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+				<div class="feature-card bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+					<div class="feature-icon w-16 h-16 bg-orange-500/20 rounded-xl flex items-center justify-center mb-6 mx-auto">
+						<span class="text-orange-400 text-2xl">⚡</span>
+					</div>
+					<h3 class="text-white font-semibold text-xl mb-4 text-center">Lightning Fast</h3>
+					<p class="text-gray-400 text-center leading-relaxed">Built with Astro's zero-JS approach for optimal performance and faster loading times</p>
+				</div>
+
+				<div class="feature-card bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+					<div class="feature-icon w-16 h-16 bg-green-500/20 rounded-xl flex items-center justify-center mb-6 mx-auto">
+						<span class="text-green-400 text-2xl">🎬</span>
+					</div>
+					<h3 class="text-white font-semibold text-xl mb-4 text-center">Smooth Animations</h3>
+					<p class="text-gray-400 text-center leading-relaxed">GSAP and ScrollTrigger for professional interactions and engaging user experiences</p>
+				</div>
+
+				<div class="feature-card bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+					<div class="feature-icon w-16 h-16 bg-cyan-500/20 rounded-xl flex items-center justify-center mb-6 mx-auto">
+						<span class="text-cyan-400 text-2xl">🎨</span>
+					</div>
+					<h3 class="text-white font-semibold text-xl mb-4 text-center">Modern Design</h3>
+					<p class="text-gray-400 text-center leading-relaxed">Tailwind CSS for rapid and responsive development with beautiful component design</p>
+				</div>
+
+				<div class="feature-card bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+					<div class="feature-icon w-16 h-16 bg-purple-500/20 rounded-xl flex items-center justify-center mb-6 mx-auto">
+						<span class="text-purple-400 text-2xl">🔧</span>
+					</div>
+					<h3 class="text-white font-semibold text-xl mb-4 text-center">Developer Ready</h3>
+					<p class="text-gray-400 text-center leading-relaxed">Pre-configured with TypeScript, ESLint, and modern development tools</p>
+				</div>
+
+				<div class="feature-card bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+					<div class="feature-icon w-16 h-16 bg-pink-500/20 rounded-xl flex items-center justify-center mb-6 mx-auto">
+						<span class="text-pink-400 text-2xl">📱</span>
+					</div>
+					<h3 class="text-white font-semibold text-xl mb-4 text-center">Fully Responsive</h3>
+					<p class="text-gray-400 text-center leading-relaxed">Mobile-first design approach ensuring perfect experience across all devices</p>
+				</div>
+
+				<div class="feature-card bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+					<div class="feature-icon w-16 h-16 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 mx-auto">
+						<span class="text-blue-400 text-2xl">🚀</span>
+					</div>
+					<h3 class="text-white font-semibold text-xl mb-4 text-center">Production Ready</h3>
+					<p class="text-gray-400 text-center leading-relaxed">Optimized build process and deployment configuration for Railway and other platforms</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Tech Stack Deep Dive Section -->
+	<section id="tech-stack" class="relative py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-900 via-blue-950 to-slate-900">
+		<div class="max-w-7xl mx-auto">
+			<!-- Section Title -->
+			<div class="text-center mb-20">
+				<h2 class="tech-title text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+					Powerful Tech Stack
+				</h2>
+				<p class="tech-subtitle text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+					Each technology chosen for maximum performance and developer experience
+				</p>
+			</div>
+
+			<!-- Tech Cards -->
+			<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+				<!-- Astro Card -->
+				<div class="tech-card bg-gradient-to-br from-orange-500/10 to-red-500/10 backdrop-blur-sm p-8 rounded-3xl border border-orange-500/20">
+					<div class="w-20 h-20 bg-orange-500/20 rounded-2xl flex items-center justify-center mb-8 mx-auto">
+						<span class="text-orange-400 text-3xl font-bold">A</span>
+					</div>
+					<h3 class="text-2xl font-bold text-white mb-6 text-center">Astro Framework</h3>
+					<ul class="space-y-4 text-gray-300">
+						<li class="flex items-start">
+							<span class="text-orange-400 mr-3 mt-1">•</span>
+							<span>Zero JavaScript by default</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-orange-400 mr-3 mt-1">•</span>
+							<span>Component islands architecture</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-orange-400 mr-3 mt-1">•</span>
+							<span>Built-in optimization</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-orange-400 mr-3 mt-1">•</span>
+							<span>Multiple framework support</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- GSAP Card -->
+				<div class="tech-card bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm p-8 rounded-3xl border border-green-500/20">
+					<div class="w-20 h-20 bg-green-500/20 rounded-2xl flex items-center justify-center mb-8 mx-auto">
+						<span class="text-green-400 text-3xl font-bold">G</span>
+					</div>
+					<h3 class="text-2xl font-bold text-white mb-6 text-center">GSAP Animations</h3>
+					<ul class="space-y-4 text-gray-300">
+						<li class="flex items-start">
+							<span class="text-green-400 mr-3 mt-1">•</span>
+							<span>Industry-standard animations</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-green-400 mr-3 mt-1">•</span>
+							<span>ScrollTrigger integration</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-green-400 mr-3 mt-1">•</span>
+							<span>Performance optimized</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-green-400 mr-3 mt-1">•</span>
+							<span>Cross-browser compatibility</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Tailwind Card -->
+				<div class="tech-card bg-gradient-to-br from-cyan-500/10 to-blue-500/10 backdrop-blur-sm p-8 rounded-3xl border border-cyan-500/20">
+					<div class="w-20 h-20 bg-cyan-500/20 rounded-2xl flex items-center justify-center mb-8 mx-auto">
+						<span class="text-cyan-400 text-3xl font-bold">T</span>
+					</div>
+					<h3 class="text-2xl font-bold text-white mb-6 text-center">Tailwind CSS</h3>
+					<ul class="space-y-4 text-gray-300">
+						<li class="flex items-start">
+							<span class="text-cyan-400 mr-3 mt-1">•</span>
+							<span>Utility-first approach</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-cyan-400 mr-3 mt-1">•</span>
+							<span>Highly customizable</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-cyan-400 mr-3 mt-1">•</span>
+							<span>Responsive design system</span>
+						</li>
+						<li class="flex items-start">
+							<span class="text-cyan-400 mr-3 mt-1">•</span>
+							<span>Minimal CSS bundle</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Call to Action Section -->
+	<section id="cta" class="relative py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-t from-slate-900 via-purple-950 to-slate-900">
+		<div class="max-w-4xl mx-auto text-center">
+			<div class="cta-content">
+				<h2 class="cta-title text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8">
+					Ready to Build Something Amazing?
+				</h2>
+				<p class="cta-description text-lg sm:text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+					Start your next project with this powerful boilerplate by Ivan Santander. 
+					Everything you need for modern web development is already configured.
+				</p>
+				
+				<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+					<button class="cta-button bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl">
+						Start Building Now
+					</button>
+					<button class="cta-button-secondary border-2 border-white/30 hover:border-white/50 text-white hover:bg-white/10 font-semibold px-8 py-4 rounded-full transition-all duration-300">
+						View Documentation
+					</button>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
+
+<script>
+	import { gsap } from 'gsap';
+	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+	// Register ScrollTrigger plugin
+	gsap.registerPlugin(ScrollTrigger);
+
+	// Wait for DOM to be ready
+	document.addEventListener('DOMContentLoaded', () => {
+		// Initial setup - hide elements
+		gsap.set(['.title-word', '.subtitle-line', '.description-container', '.tech-item', '.scroll-indicator'], {
+			opacity: 0,
+			y: 50
+		});
+
+		gsap.set('.floating-element', {
+			opacity: 0,
+			scale: 0.5
+		});
+
+		// Hero entrance animation
+		const heroTl = gsap.timeline({ delay: 0.5 });
+
+		heroTl.to('.title-word', {
+			opacity: 1,
+			y: 0,
+			duration: 1,
+			stagger: 0.2,
+			ease: "power3.out"
+		})
+		.to('.subtitle-line', {
+			opacity: 1,
+			scaleX: 1,
+			duration: 0.8,
+			ease: "power2.out"
+		}, "-=0.5")
+		.to('.description-container', {
+			opacity: 1,
+			y: 0,
+			duration: 0.8,
+			ease: "power2.out"
+		}, "-=0.3")
+		.to('.tech-item', {
+			opacity: 1,
+			y: 0,
+			duration: 0.6,
+			stagger: 0.1,
+			ease: "back.out(1.7)"
+		}, "-=0.4")
+		.to('.scroll-indicator', {
+			opacity: 1,
+			y: 0,
+			duration: 0.6,
+			ease: "power2.out"
+		}, "-=0.2");
+
+		// Floating elements animation
+		gsap.to('.floating-element', {
+			opacity: 0.3,
+			scale: 1,
+			duration: 2,
+			stagger: 0.3,
+			ease: "power2.out",
+			delay: 1
+		});
+
+		// Continuous floating animation
+		gsap.to('.floating-element:nth-child(1)', {
+			y: -20,
+			duration: 3,
+			repeat: -1,
+			yoyo: true,
+			ease: "power1.inOut"
+		});
+
+		gsap.to('.floating-element:nth-child(2)', {
+			y: 15,
+			duration: 4,
+			repeat: -1,
+			yoyo: true,
+			ease: "power1.inOut",
+			delay: 1
+		});
+
+		gsap.to('.floating-element:nth-child(3)', {
+			y: -10,
+			duration: 5,
+			repeat: -1,
+			yoyo: true,
+			ease: "power1.inOut",
+			delay: 2
+		});
+
+		// Scroll indicator animation
+		gsap.to('.scroll-dot', {
+			y: 15,
+			duration: 1.5,
+			repeat: -1,
+			yoyo: true,
+			ease: "power2.inOut",
+			delay: 2
+		});
+
+		// Features Section ScrollTrigger
+		gsap.fromTo('.section-title', {
+			opacity: 0,
+			y: 60
+		}, {
+			opacity: 1,
+			y: 0,
+			duration: 1,
+			ease: "power3.out",
+			scrollTrigger: {
+				trigger: '#features',
+				start: 'top 80%',
+				end: 'top 50%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		gsap.fromTo('.section-subtitle', {
+			opacity: 0,
+			y: 40
+		}, {
+			opacity: 1,
+			y: 0,
+			duration: 0.8,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: '#features',
+				start: 'top 75%',
+				end: 'top 45%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		gsap.fromTo('.feature-card', {
+			opacity: 0,
+			y: 60,
+			scale: 0.9
+		}, {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			duration: 0.8,
+			stagger: 0.2,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: '.features-grid',
+				start: 'top 80%',
+				end: 'top 30%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		// Tech Stack Section ScrollTrigger
+		gsap.fromTo('.tech-title', {
+			opacity: 0,
+			y: 60
+		}, {
+			opacity: 1,
+			y: 0,
+			duration: 1,
+			ease: "power3.out",
+			scrollTrigger: {
+				trigger: '#tech-stack',
+				start: 'top 80%',
+				end: 'top 50%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		gsap.fromTo('.tech-subtitle', {
+			opacity: 0,
+			y: 40
+		}, {
+			opacity: 1,
+			y: 0,
+			duration: 0.8,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: '#tech-stack',
+				start: 'top 75%',
+				end: 'top 45%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		gsap.fromTo('.tech-card', {
+			opacity: 0,
+			y: 80,
+			rotationY: 15
+		}, {
+			opacity: 1,
+			y: 0,
+			rotationY: 0,
+			duration: 1,
+			stagger: 0.3,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: '#tech-stack .grid',
+				start: 'top 80%',
+				end: 'top 30%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		// CTA Section ScrollTrigger
+		gsap.fromTo('.cta-title', {
+			opacity: 0,
+			y: 60
+		}, {
+			opacity: 1,
+			y: 0,
+			duration: 1,
+			ease: "power3.out",
+			scrollTrigger: {
+				trigger: '#cta',
+				start: 'top 80%',
+				end: 'top 50%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		gsap.fromTo('.cta-description', {
+			opacity: 0,
+			y: 40
+		}, {
+			opacity: 1,
+			y: 0,
+			duration: 0.8,
+			ease: "power2.out",
+			scrollTrigger: {
+				trigger: '#cta',
+				start: 'top 75%',
+				end: 'top 45%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		gsap.fromTo(['.cta-button', '.cta-button-secondary'], {
+			opacity: 0,
+			y: 40,
+			scale: 0.9
+		}, {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			duration: 0.8,
+			stagger: 0.2,
+			ease: "back.out(1.7)",
+			scrollTrigger: {
+				trigger: '.cta-content',
+				start: 'top 70%',
+				end: 'top 40%',
+				toggleActions: 'play none none reverse'
+			}
+		});
+
+		// Parallax effects
+		gsap.to('.floating-element', {
+			y: -100,
+			ease: "none",
+			scrollTrigger: {
+				trigger: '#welcome-container',
+				start: 'top bottom',
+				end: 'bottom top',
+				scrub: 1
+			}
+		});
+
+		// Tech stack hover animations
+		document.querySelectorAll('.tech-item').forEach(item => {
+			item.addEventListener('mouseenter', () => {
+				gsap.to(item, {
+					scale: 1.05,
+					duration: 0.3,
+					ease: "power2.out"
+				});
+			});
+
+			item.addEventListener('mouseleave', () => {
+				gsap.to(item, {
+					scale: 1,
+					duration: 0.3,
+					ease: "power2.out"
+				});
+			});
+		});
+
+		// Feature cards hover
+		document.querySelectorAll('.feature-card').forEach(card => {
+			card.addEventListener('mouseenter', () => {
+				gsap.to(card, {
+					y: -10,
+					duration: 0.3,
+					ease: "power2.out"
+				});
+			});
+
+			card.addEventListener('mouseleave', () => {
+				gsap.to(card, {
+					y: 0,
+					duration: 0.3,
+					ease: "power2.out"
+				});
+			});
+		});
+
+		// Tech cards hover
+		document.querySelectorAll('.tech-card').forEach(card => {
+			card.addEventListener('mouseenter', () => {
+				gsap.to(card, {
+					scale: 1.02,
+					rotationY: -2,
+					duration: 0.4,
+					ease: "power2.out"
+				});
+			});
+
+			card.addEventListener('mouseleave', () => {
+				gsap.to(card, {
+					scale: 1,
+					rotationY: 0,
+					duration: 0.4,
+					ease: "power2.out"
+				});
+			});
+		});
+
+		// Button hover animations
+		document.querySelectorAll('.cta-button, .cta-button-secondary').forEach(button => {
+			button.addEventListener('mouseenter', () => {
+				gsap.to(button, {
+					scale: 1.05,
+					duration: 0.3,
+					ease: "power2.out"
+				});
+			});
+
+			button.addEventListener('mouseleave', () => {
+				gsap.to(button, {
+					scale: 1,
+					duration: 0.3,
+					ease: "power2.out"
+				});
+			});
+		});
+	});
+</script>
+
+<style>
+	.subtitle-line {
+		width: 100px;
+		transform-origin: left;
+		transform: scaleX(0);
+	}
+
+	@media (min-width: 640px) {
+		.subtitle-line {
+			width: 200px;
+		}
+	}
+
+	.feature-icon, .tech-card {
+		transition: transform 0.3s ease;
+	}
+
+	.feature-card:hover .feature-icon {
+		transform: scale(1.1);
+	}
+
+	/* Custom scrollbar */
+	:global(html) {
+		scroll-behavior: smooth;
+	}
+
+	:global(body::-webkit-scrollbar) {
+		width: 8px;
+	}
+
+	:global(body::-webkit-scrollbar-track) {
+		background: #1e293b;
+	}
+
+	:global(body::-webkit-scrollbar-thumb) {
+		background: #475569;
+		border-radius: 4px;
+	}
+
+	:global(body::-webkit-scrollbar-thumb:hover) {
+		background: #64748b;
+	}
+</style>
