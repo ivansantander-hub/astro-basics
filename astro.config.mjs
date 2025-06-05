@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,5 +12,8 @@ export default defineConfig({
   server: {
     port: Number(process.env.PORT) || 4321,
     host: '0.0.0.0'
+  },
+  vite: {
+    plugins: [tailwindcss()]
   }
 });
